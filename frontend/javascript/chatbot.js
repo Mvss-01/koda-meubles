@@ -103,12 +103,6 @@ const chatbotHTML = `
       </div>
     </div>
 
-    <div class="chatbot-suggestions" id="chatbot-suggestions">
-      <button class="chatbot-suggestion-btn">Vos produits populaires ?</button>
-      <button class="chatbot-suggestion-btn">Livraison et délais</button>
-      <button class="chatbot-suggestion-btn">Politique de retour</button>
-    </div>
-
     <div class="chatbot-input-area">
       <input type="text" class="chatbot-input" id="chatbot-input" placeholder="Écrivez votre message..." autocomplete="off">
       <button class="chatbot-send-btn" id="chatbot-send" aria-label="Envoyer" disabled>
