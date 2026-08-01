@@ -1,6 +1,6 @@
 const CHATBOT_API_BASE = window.location.hostname === 'localhost'
   ? 'http://localhost:8000/api'
-  : 'https://koda-meubles.onrender.com//api';
+  : 'https://koda-meubles.onrender.com/api';
 
 const chatbotHTML = `
   <style>
