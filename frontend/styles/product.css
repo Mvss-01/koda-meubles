@@ -1,0 +1,235 @@
+.product-page {
+    padding-top: 8rem;
+    padding-bottom: 6rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    background-color: var(--color-brand-canvas);
+    min-height: 100vh;
+}
+
+@media (min-width: 640px) {
+    .product-page {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .product-page {
+        padding-left: 6rem;
+        padding-right: 6rem;
+    }
+}
+
+.product-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.back-link {
+    margin-bottom: 1.25rem;
+}
+
+.back-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    color: #71717a;
+    transition: color 0.2s;
+}
+
+.back-link a:hover {
+    color: var(--color-brand-obsidian);
+}
+
+.product-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    opacity: 0;
+    transition: opacity 0.05 ease;
+}
+
+.product-layout.loaded {
+    opacity: 1;
+}
+
+@media (min-width: 1024px) {
+    .product-layout {
+        flex-direction: row;
+        gap: 6rem;
+    }
+}
+
+.product-image-container {
+    width: 100%;
+    position: relative;
+    aspect-ratio: 1;
+    background-color: var(--color-brand-warm);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+    .product-image-container {
+        width: 50%;
+    }
+}
+
+.product-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media (min-width: 1024px) {
+    .product-details {
+        width: 50%;
+    }
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 14px;
+    color: #71717a;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.product-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--color-brand-obsidian);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    letter-spacing: -0.025em;
+}
+
+@media (min-width: 640px) {
+    .product-title {
+        font-size: 48px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .product-title {
+        font-size: 60px;
+    }
+}
+
+.product-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-brand-obsidian);
+    margin-bottom: 2.5rem;
+}
+
+.product-desc {
+    color: #52525b;
+    font-size: 16px;
+    line-height: 1.625;
+    margin-bottom: 2.5rem;
+    max-width: 32rem;
+}
+
+.product-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0.75rem;
+  margin-bottom: 3.5rem;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 640px) {
+  .product-actions {
+    flex-wrap: nowrap;
+  }
+}
+
+.add-to-cart-btn {
+    flex: 1;
+    background-color: var(--color-brand-obsidian);
+    color: white;
+    padding: 1rem 1rem;
+    font-size: 14px;
+    white-space: nowrap;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+    height: 3.5rem;
+}
+
+@media (min-width: 640px) {
+    .add-to-cart-btn {
+        padding: 1rem 2rem;
+        font-size: 16px;
+    }
+}
+
+.add-to-cart-btn:hover {
+    background-color: var(--color-brand-charcoal);
+}
+
+
+
+.product-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(228, 228, 231, 0.6);
+    max-width: 32rem;
+}
+
+.spec-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    align-items: flex-start;
+}
+
+.spec-row h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-brand-obsidian);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    width: 100%;
+}
+
+.spec-row p {
+    color: #71717a;
+    font-size: 14px;
+    line-height: 1.625;
+    width: 100%;
+}
+
+@media (min-width: 640px) {
+    .spec-row {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 0;
+    }
+    .spec-row h4 {
+        width: 33.333%;
+    }
+    .spec-row p {
+        width: 66.666%;
+    }
+}

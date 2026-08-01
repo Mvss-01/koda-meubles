@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — KODA Meubles</title>
+  <meta name="description"
+    content="Contactez KODA pour toute question sur nos collections ou pour un projet personnalisé. Nous sommes là pour vous aider à créer votre espace parfait.">
+  <link rel="preconnect" href="https://opmrbxjwfmtaxsujzysv.supabase.co">
+  <link rel="stylesheet" href="../styles/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <main class="contact-page">
+    <section class="contact-hero">
+      <div class="contact-hero-bg">
+        <img src="../images/images-pages/contact-hero.png" alt="Showroom KODA" />
+        <div class="contact-hero-overlay"></div>
+      </div>
+      <div class="contact-hero-content">
+        <h1>
+          <span class="contact-hero-line animate-slide-up"
+            style="animation-delay: 200ms; font-style: italic;">CONTACTEZ</span>
+          <span class="contact-hero-line animate-slide-up" style="animation-delay: 400ms;">NOUS</span>
+        </h1>
+        <p class="contact-hero-desc animate-slide-up" style="animation-delay: 600ms;">
+          Une question sur nos collections ou besoin d'aide pour un projet personnalisé ? Nous sommes là pour vous aider
+          à créer votre espace parfait.
+        </p>
+      </div>
+    </section>
+
+    <section class="contact-content">
+      <div class="contact-grid">
+        <div class="contact-form-section">
+          <div class="contact-form-header">
+            <h2>Envoyez-nous un message</h2>
+            <p>Remplissez le formulaire ci-dessous et notre équipe vous répondra dans les 24 heures.</p>
+          </div>
+
+          <form class="contact-form" id="contact-form">
+            <div class="contact-form-row">
+              <div class="contact-field">
+                <label for="contact-name">Nom complet</label>
+                <input type="text" id="contact-name" placeholder="Jean Dupont">
+              </div>
+              <div class="contact-field">
+                <label for="contact-email">Adresse e-mail</label>
+                <input type="email" id="contact-email" placeholder="jean@exemple.com">
+              </div>
+            </div>
+
+            <div class="contact-field">
+              <label for="contact-subject">Sujet</label>
+              <select id="contact-subject">
+                <option>Demande générale</option>
+                <option>Question sur un produit</option>
+                <option>Projet personnalisé</option>
+                <option>Support</option>
+              </select>
+            </div>
+
+            <div class="contact-field">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" rows="6" placeholder="Comment pouvons-nous vous aider ?"></textarea>
+            </div>
+
+            <button type="submit" class="contact-submit-btn">Envoyer le message</button>
+          </form>
+        </div>
+
+        <div class="contact-info-section">
+          <div class="contact-info-list">
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="16" x="2" y="4" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+              </div>
+              <div class="contact-info-text">
+                <h3>Email</h3>
+                <p class="contact-info-value">KODA@gmail.com</p>
+                <p class="contact-info-desc">Pour toutes vos demandes et commandes.</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+              </div>
+              <div class="contact-info-text">
+                <h3>Téléphone</h3>
+                <p class="contact-info-value">+213 550689560</p>
+                <p class="contact-info-desc">Dim — Jeu, 9h — 18h</p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div class="contact-info-text">
+                <h3>Adresse</h3>
+                <p class="contact-info-value">Boulevard Krim Belkacem</p>
+                <p class="contact-info-desc">Bastos, Tizi Ouzou 15000, Algérie</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../javascript/supabase-init.js"></script>
+  <script src="../javascript/cart.js"></script>
+  <script src="../javascript/navbar.js"></script>
+  <script src="../javascript/footer.js"></script>
+  <script src="../javascript/contact.js"></script>
+  <script src="../javascript/chatbot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      initNavbar();
+      initFooter();
+      initChatbot();
+    });
+  </script>
+</body>
+
+</html>

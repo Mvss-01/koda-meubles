@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S'inscrire - KODA Meubles</title>
+  <meta name="description"
+    content="Créez votre compte KODA Meubles et commencez à découvrir des meubles de qualité, sélectionnés pour votre maison.">
+  <link rel="stylesheet" href="../styles/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <main class="auth-page">
+    <div class="auth-split">
+      <div class="auth-form-side">
+        <div class="auth-form-container">
+          <div class="back-link">
+            <a href="../index.html">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="m15 18-6-6 6-6" />
+              </svg>
+              RETOUR À LA BOUTIQUE
+            </a>
+          </div>
+          <h1 class="auth-heading">Créez votre compte</h1>
+          <p class="auth-subheading">Rejoignez KODA et découvrez des meubles haut de gamme pour votre maison</p>
+
+          <form class="auth-form" id="signup-form">
+            <div class="auth-field-row">
+              <div class="auth-field">
+                <label for="signup-first">Prénom</label>
+                <input type="text" id="signup-first" name="firstName" placeholder="Jean" required
+                  autocomplete="given-name">
+              </div>
+              <div class="auth-field">
+                <label for="signup-last">Nom</label>
+                <input type="text" id="signup-last" name="lastName" placeholder="Dupont" required
+                  autocomplete="family-name">
+              </div>
+            </div>
+            <div class="auth-field">
+              <label for="signup-email">Adresse E-mail</label>
+              <input type="email" id="signup-email" name="email" placeholder="vous@exemple.com" required
+                autocomplete="email">
+            </div>
+            <div class="auth-field">
+              <label for="signup-password">Mot de passe</label>
+              <div class="auth-password-wrap">
+                <input type="password" id="signup-password" name="password" placeholder="Créez un mot de passe" required
+                  autocomplete="new-password" minlength="8">
+                <button type="button" class="auth-toggle-pw" id="toggle-password" aria-label="Afficher le mot de passe">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </button>
+              </div>
+              <div class="auth-password-reqs">
+                <div class="auth-req" id="req-length">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
+                  <span>Au moins 8 caractères</span>
+                </div>
+                <div class="auth-req" id="req-upper">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
+                  <span>Une majuscule</span>
+                </div>
+                <div class="auth-req" id="req-number">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
+                  <span>Un chiffre</span>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="auth-submit-btn" id="signup-submit">Créer le Compte</button>
+          </form>
+
+
+
+          <p class="auth-switch">Vous avez déjà un compte ? <a href="login.html">Se connecter</a></p>
+        </div>
+      </div>
+      <div class="auth-image-side">
+        <img src="../images/images-pages/signup-image.jpg" alt="Modern architectural armchair in elegant setting">
+        <div class="auth-image-overlay"></div>
+      </div>
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../javascript/supabase-init.js"></script>
+  <script src="../javascript/navbar.js"></script>
+  <script src="../javascript/footer.js"></script>
+  <script src="../javascript/cart.js"></script>
+  <script src="../javascript/auth.js"></script>
+  <script src="../javascript/chatbot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      initNavbar();
+      initFooter();
+      initChatbot();
+      initAuth();
+    });
+  </script>
+</body>
+
+</html>

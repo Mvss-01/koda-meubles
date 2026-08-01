@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paiement - KODA Meubles</title>
+  <link rel="stylesheet" href="../styles/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <main class="checkout-main" id="checkout-main">
+    <div class="checkout-container">
+      <div class="checkout-back">
+        <a href="../index.html">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+          Retour à la Boutique
+        </a>
+      </div>
+
+      <div class="checkout-grid">
+        <div class="checkout-form-section">
+          <h1 class="checkout-title">Paiement</h1>
+
+          <form id="checkout-form" class="checkout-form">
+
+            <section>
+              <h2 class="form-section-title">Informations de Contact</h2>
+              <div class="input-group">
+                <input type="email" id="checkout-email" required placeholder="Adresse E-mail" class="form-input">
+              </div>
+            </section>
+
+            <section>
+              <h2 class="form-section-title">Adresse de Livraison</h2>
+              <div class="form-row">
+                <div class="col-span-2">
+                  <select class="form-select" id="checkout-wilaya" required>
+                    <option value="" disabled selected>Sélectionnez la Wilaya</option>
+                    <option value="1">01 - Adrar</option>
+                    <option value="2">02 - Chlef</option>
+                    <option value="3">03 - Laghouat</option>
+                    <option value="4">04 - Oum El Bouaghi</option>
+                    <option value="5">05 - Batna</option>
+                    <option value="6">06 - Béjaïa</option>
+                    <option value="7">07 - Biskra</option>
+                    <option value="8">08 - Béchar</option>
+                    <option value="9">09 - Blida</option>
+                    <option value="10">10 - Bouira</option>
+                    <option value="11">11 - Tamanrasset</option>
+                    <option value="12">12 - Tébessa</option>
+                    <option value="13">13 - Tlemcen</option>
+                    <option value="14">14 - Tiaret</option>
+                    <option value="15">15 - Tizi Ouzou</option>
+                    <option value="16">16 - Alger</option>
+                    <option value="17">17 - Djelfa</option>
+                    <option value="18">18 - Jijel</option>
+                    <option value="19">19 - Sétif</option>
+                    <option value="20">20 - Saïda</option>
+                    <option value="21">21 - Skikda</option>
+                    <option value="22">22 - Sidi Bel Abbès</option>
+                    <option value="23">23 - Annaba</option>
+                    <option value="24">24 - Guelma</option>
+                    <option value="25">25 - Constantine</option>
+                    <option value="26">26 - Médéa</option>
+                    <option value="27">27 - Mostaganem</option>
+                    <option value="28">28 - M'Sila</option>
+                    <option value="29">29 - Mascara</option>
+                    <option value="30">30 - Ouargla</option>
+                    <option value="31">31 - Oran</option>
+                    <option value="32">32 - El Bayadh</option>
+                    <option value="33">33 - Illizi</option>
+                    <option value="34">34 - Bordj Bou Arréridj</option>
+                    <option value="35">35 - Boumerdès</option>
+                    <option value="36">36 - El Tarf</option>
+                    <option value="37">37 - Tindouf</option>
+                    <option value="38">38 - Tissemsilt</option>
+                    <option value="39">39 - El Oued</option>
+                    <option value="40">40 - Khenchela</option>
+                    <option value="41">41 - Souk Ahras</option>
+                    <option value="42">42 - Tipaza</option>
+                    <option value="43">43 - Mila</option>
+                    <option value="44">44 - Aïn Defla</option>
+                    <option value="45">45 - Naâma</option>
+                    <option value="46">46 - Aïn Témouchent</option>
+                    <option value="47">47 - Ghardaïa</option>
+                    <option value="48">48 - Relizane</option>
+                    <option value="49">49 - Timimoun</option>
+                    <option value="50">50 - Bordj Badji Mokhtar</option>
+                    <option value="51">51 - Ouled Djellal</option>
+                    <option value="52">52 - Béni Abbès</option>
+                    <option value="53">53 - In Salah</option>
+                    <option value="54">54 - In Guezzam</option>
+                    <option value="55">55 - Touggourt</option>
+                    <option value="56">56 - Djanet</option>
+                    <option value="57">57 - El M'Ghair</option>
+                    <option value="58">58 - El Meniaa</option>
+                  </select>
+                </div>
+                <input type="text" id="checkout-firstname" required placeholder="Prénom" class="form-input">
+                <input type="text" id="checkout-lastname" required placeholder="Nom" class="form-input">
+                <input type="text" id="checkout-address" required placeholder="Adresse complète"
+                  class="form-input col-span-2">
+                <input type="tel" id="checkout-phone" required placeholder="Numéro de téléphone"
+                  class="form-input col-span-2">
+              </div>
+            </section>
+
+
+
+          </form>
+        </div>
+
+        <div class="checkout-summary-section">
+          <div class="summary-sticky">
+            <h2 class="summary-title">Résumé de la Commande</h2>
+
+            <div class="cart-items-list" id="cart-items-list">
+            </div>
+
+            <div class="cart-totals">
+              <div class="cart-total-row">
+                <span>Sous-total</span>
+                <span class="val" id="summary-subtotal">0 DZD</span>
+              </div>
+
+              <div class="cart-total-row">
+                <span>Livraison</span>
+                <span class="val" id="summary-shipping">Gratuit</span>
+              </div>
+            </div>
+
+            <div class="cart-final-total">
+              <span class="cart-final-label">Total</span>
+              <span class="cart-final-val">
+                <span id="summary-total">0.00 DZD</span>
+              </span>
+            </div>
+
+            <button form="checkout-form" type="submit" class="checkout-pay-btn" id="pay-btn">
+              Commander
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../javascript/supabase-init.js"></script>
+  <script src="../javascript/cart.js"></script>
+  <script src="../javascript/navbar.js"></script>
+  <script src="../javascript/footer.js"></script>
+  <script src="../javascript/checkout.js"></script>
+  <script src="../javascript/chatbot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      initNavbar();
+      initFooter();
+      initChatbot();
+    });
+  </script>
+</body>
+
+</html>

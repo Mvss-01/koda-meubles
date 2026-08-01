@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KODA Meubles</title>
+  <meta name="description"
+    content="Des meubles haut de gamme qui allient design, confort et prix abordable. Transformez votre espace avec la sélection de KODA.">
+  <link rel="preconnect" href="https://opmrbxjwfmtaxsujzysv.supabase.co">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+  <main>
+    <section class="hero">
+      <div class="hero-bg">
+        <img src="./images/images-pages/home-hero.png" alt="Bureau moderne luxueux avec bureau en noyer" />
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-title">
+          <h1>
+            L'élégance dans chaque détail
+          </h1>cd
+        </div>
+        <div class="hero-bottom">
+          <div class="hero-desc">
+            <p>Bienvenue chez KODA, où vous trouverez des meubles de haute qualité qui allient design, confort et
+              prix abordable. Transformez votre espace avec notre sélection</p>
+          </div>
+          <a href="./content/products-list.html" class="hero-cta">Découvrir la collection</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="categories">
+      <div class="categories-header">
+        <div class="categories-title-wrap">
+          <h2>Catégories</h2>
+          <p>Découvrez toutes les collections que nous avons à vous offrir</p>
+        </div>
+      </div>
+      <div class="categories-grid">
+      </div>
+    </section>
+
+    <section class="collection">
+      <div class="collection-header">
+        <div class="collection-title-wrap">
+          <h2>Produits Populaires</h2>
+          <p>Rejoignez les nombreuses personnes qui sont tombées amoureuses de ces produits populaires. Chaque article
+            est un véritable succès.</p>
+        </div>
+        <a href="./content/products-list.html" class="view-all-btn">Voir tous les produits</a>
+      </div>
+      <div class="popular-grid">
+      </div>
+      <a href="./content/products-list.html" class="view-all-btn view-all-btn-mobile">Voir tous les produits</a>
+    </section>
+
+    <section class="cta">
+      <div class="cta-bg"></div>
+      <div class="cta-content">
+        <h2>Achetez maintenant pour une qualité premium</h2>
+        <p>Améliorez votre espace avec des meubles élégants et confortables. Trouvez les pièces parfaites dès
+          maintenant.</p>
+        <button onclick="window.location.href='./content/products-list.html'">Commencer</button>
+      </div>
+      <div class="cta-image">
+        <img src="../images/images-pages/about-cta-image.avif" alt="Premium furniture collection showcase">
+        <div class="cta-image-overlay"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="javascript/supabase-init.js"></script>
+  <script src="javascript/cart.js"></script>
+  <script src="javascript/load-data.js"></script>
+  <script src="javascript/navbar.js"></script>
+  <script src="javascript/footer.js"></script>
+  <script src="javascript/chatbot.js"></script>
+  <script type="module" src="javascript/app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      initNavbar();
+      initFooter();
+      initChatbot();
+      await loadData();
+    });
+  </script>
+</body>
+
+</html>

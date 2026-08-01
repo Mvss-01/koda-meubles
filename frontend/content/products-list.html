@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produits | KODA Meubles</title>
+  <meta name="description" content="Découvrez notre collection complète de meubles haut de gamme.">
+  <link rel="preconnect" href="https://opmrbxjwfmtaxsujzysv.supabase.co">
+  <link rel="stylesheet" href="../styles/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+  <main>
+    <section class="top-categories-section">
+      <h1 class="top-categories-title">Nos Produits</h1>
+      <div class="top-categories-list">
+      </div>
+      <div class="subcategories-list"
+        style="display: none; height: 0; overflow: hidden; transition: height 0.3s ease; padding-top: 1rem; text-align: center;">
+      </div>
+    </section>
+
+    <section class="collection" style="padding-top: 3rem;">
+      <div class="collection-content">
+
+        <div class="products-area">
+          <div class="toolbar">
+            <div class="toolbar-left">
+              <div class="search-container">
+                <img src="../images/icons/recherche.png" alt="Rechercher" width="16" height="16">
+                <input type="text" class="search-input" id="search-input" placeholder="Rechercher des produits...">
+              </div>
+            </div>
+            <div class="toolbar-right">
+              <span class="items-found" id="items-found">10 Articles Trouvés</span>
+              <div class="sort-dropdown-container">
+                <label for="sort-select" class="sort-label">Trier par</label>
+                <div class="sort-select-wrapper">
+                  <select id="sort-select" class="sort-select">
+                    <option value="default">Par défaut</option>
+                    <option value="price_asc">Prix : Croissant</option>
+                    <option value="price_desc">Prix : Décroissant</option>
+                  </select>
+                  <svg class="sort-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="products-grid" id="products-grid">
+          </div>
+          <div class="pagination">
+            <button class="pag-btn group-hover-left"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m15 18-6-6 6-6" />
+              </svg></button>
+            <div class="pag-dots">
+              <div class="dot active-dot"></div>
+              <div class="dot"></div>
+            </div>
+            <button class="pag-btn group-hover-right"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m9 18 6-6-6-6" />
+              </svg></button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../javascript/supabase-init.js"></script>
+  <script src="../javascript/cart.js"></script>
+  <script src="../javascript/load-data.js"></script>
+  <script src="../javascript/navbar.js"></script>
+  <script src="../javascript/footer.js"></script>
+  <script src="../javascript/products-list.js"></script>
+  <script src="../javascript/chatbot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      initNavbar();
+      initFooter();
+      initChatbot();
+      await loadData();
+      initProductsList();
+    });
+  </script>
+</body>
+
+</html>

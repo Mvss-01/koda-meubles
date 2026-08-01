@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>À Propos — KODA Meubles</title>
+  <meta name="description"
+    content="Découvrez l'histoire de KODA. Depuis notre création, nous réimaginons la façon dont les gens vivent leurs espaces grâce à un design intentionnel et un savoir-faire inégalé.">
+  <link rel="preconnect" href="https://opmrbxjwfmtaxsujzysv.supabase.co">
+  <link rel="stylesheet" href="../styles/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <main class="about-page">
+    <section class="about-hero">
+      <div class="about-hero-bg">
+        <img src="../images/images-pages/about-hero.png" alt="Espace de travail design" />
+        <div class="about-hero-overlay"></div>
+      </div>
+      <div class="about-hero-content">
+        <h1>
+          <span class="about-hero-line animate-slide-up"
+            style="animation-delay: 200ms; font-style: italic;">NOTRE</span>
+          <span class="about-hero-line animate-slide-up" style="animation-delay: 400ms;">HISTOIRE</span>
+        </h1>
+        <p class="about-hero-desc animate-slide-up" style="animation-delay: 600ms;">
+          Depuis notre création, KODA se consacre à réimaginer la façon dont les gens vivent leurs espaces grâce à un
+          design intentionnel et un savoir-faire inégalé.
+        </p>
+      </div>
+    </section>
+
+    <section class="about-philosophy">
+      <div class="about-philosophy-grid">
+        <div class="about-philosophy-text">
+          <h2>Un Design avec une <span style="font-style: italic;">Intention</span></h2>
+          <div class="about-philosophy-body">
+            <p>
+              Chez KODA, nous croyons que le mobilier est bien plus que de simples objets dans une pièce. Il s'agit de
+              créer un environnement qui inspire, réconforte et reflète votre identité unique.
+            </p>
+            <p>
+              Chaque pièce que nous créons est le fruit d'une planification méticuleuse, d'un approvisionnement durable
+              et d'une passion pour une esthétique moderne qui résiste à l'épreuve du temps.
+            </p>
+          </div>
+        </div>
+        <div class="about-philosophy-image">
+          <img src="../images/images-pages/about-image.png" alt="Artisanat du mobilier" />
+        </div>
+      </div>
+    </section>
+
+    <section class="about-values">
+      <div class="about-values-inner">
+        <div class="about-values-header">
+          <h2>Nos Valeurs</h2>
+          <div class="about-values-accent"></div>
+        </div>
+        <div class="about-values-grid">
+          <div class="about-value-item">
+            <h3>01. Qualité</h3>
+            <p>Nous utilisons uniquement les meilleurs matériaux, garantissant que chaque pièce est construite pour
+              durer des générations.</p>
+          </div>
+          <div class="about-value-item">
+            <h3>02. Durabilité</h3>
+            <p>Notre engagement envers la planète signifie un approvisionnement responsable et des pratiques
+              respectueuses de l'environnement.</p>
+          </div>
+          <div class="about-value-item">
+            <h3>03. Innovation</h3>
+            <p>Allier les techniques traditionnelles à la technologie moderne pour un confort et un design supérieurs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="cta-bg"></div>
+      <div class="cta-content">
+        <h2>Achetez maintenant pour une qualité premium</h2>
+        <p>Améliorez votre espace avec des meubles élégants et confortables. Trouvez les pièces parfaites dès
+          maintenant.</p>
+        <button onclick="window.location.href='products-list.html'">Commencer</button>
+      </div>
+      <div class="cta-image">
+        <img src="../images/images-pages/about-cta-image.avif" alt="Premium furniture collection showcase">
+        <div class="cta-image-overlay"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../javascript/supabase-init.js"></script>
+  <script src="../javascript/cart.js"></script>
+  <script src="../javascript/navbar.js"></script>
+  <script src="../javascript/footer.js"></script>
+  <script src="../javascript/chatbot.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      initNavbar();
+      initFooter();
+      initChatbot();
+    });
+  </script>
+</body>
+
+</html>
