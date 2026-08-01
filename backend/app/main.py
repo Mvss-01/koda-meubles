@@ -5,7 +5,7 @@ import os
 
 app = FastAPI(title="CRAG Travel Assistant")
 
-allowed_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:5500,http://127.0.0.1:5500").split(",")
+allowed_origins = os.getenv("ALLOWED_ORIGINS", "https://koda-meubles.vercel.app").split(",")
 
 app.add_middleware(
     CORSMiddleware,
