@@ -16,6 +16,8 @@ function getCachedData() {
   }
 }
 
+window.getCachedData = getCachedData;
+
 function setCachedData(categories, subcategories, products) {
   try {
     sessionStorage.setItem(DATA_CACHE_KEY, JSON.stringify({
@@ -50,11 +52,17 @@ async function loadData() {
     let categories, subcategories, productsData;
     const cached = getCachedData();
 
-    if (cached) {
+    if (cached && cached.products && cached.products.length > 0) {
       categories = cached.categories;
       subcategories = cached.subcategories;
       productsData = cached.products;
     } else {
+      if (!window.supabaseClient) {
+        console.error('Supabase client not initialized');
+        if (productsGrid) productsGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 2rem;">Erreur d\'initialisation Supabase.</p>';
+        return;
+      }
+
       const [catRes, subRes, prodRes] = await Promise.all([
         window.supabaseClient.from('categories').select('*'),
         window.supabaseClient.from('subcategories').select('*'),
@@ -63,6 +71,8 @@ async function loadData() {
 
       if (catRes.error || subRes.error || prodRes.error) {
         console.error('Error loading data:', catRes.error || subRes.error || prodRes.error);
+        if (productsGrid) productsGrid.innerHTML = '<p class="error-msg" style="text-align:center; grid-column: 1/-1; padding: 2rem;">Erreur de chargement des produits. Veuillez rafraîchir la page.</p>';
+        if (popularGrid) popularGrid.innerHTML = '<p class="error-msg" style="text-align:center; grid-column: 1/-1; padding: 2rem;">Erreur de chargement des produits.</p>';
         return;
       }
 
@@ -70,27 +80,29 @@ async function loadData() {
       subcategories = subRes.data;
       productsData = prodRes.data;
 
-      setCachedData(categories, subcategories, productsData);
+      if (categories && subcategories && productsData) {
+        setCachedData(categories, subcategories, productsData);
+      }
     }
 
-    const products = productsData ? productsData.filter(p => p.stock > 0) : [];
+    const products = productsData ? productsData.filter(p => p.stock === undefined || p.stock === null || p.stock > 0) : [];
 
     const catMap = {};
     if (categories) {
       categories.forEach(c => catMap[c.id] = c.slug);
     }
 
-
     const categoriesGrid = document.querySelector('.categories-grid');
     if (categoriesGrid && categories) {
       categoriesGrid.innerHTML = '';
       categories.forEach(cat => {
+        const catImg = Array.isArray(cat.images) ? cat.images[0] : cat.images;
         const a = document.createElement('a');
         a.href = `${contentPrefix}products-list.html?category=${cat.slug}`;
         a.className = 'category-card';
         a.innerHTML = `
           <div class="category-img">
-            <img src="${cat.images}" alt="${cat.name}">
+            <img src="${catImg || ''}" alt="${cat.name}">
           </div>
           <h3>${cat.name}</h3>
         `;
@@ -98,18 +110,21 @@ async function loadData() {
       });
     }
 
-
     const topCategoriesList = document.querySelector('.top-categories-list');
     if (topCategoriesList && categories) {
       topCategoriesList.innerHTML = '';
+      
+      const allDiv = document.createElement('div');
+      allDiv.className = 'top-category-pill';
+      allDiv.dataset.category = 'all';
+      allDiv.textContent = 'Tous';
+      topCategoriesList.appendChild(allDiv);
+
       categories.forEach(cat => {
         const div = document.createElement('div');
         div.className = 'top-category-pill';
         div.dataset.category = cat.slug;
-        div.innerHTML = `
-          <span class="clear-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span>
-          ${cat.name}
-        `;
+        div.textContent = cat.name;
         topCategoriesList.appendChild(div);
       });
     }
@@ -145,8 +160,10 @@ async function loadData() {
         }
       }
 
+      const prodImg = Array.isArray(prod.images) ? prod.images[0] : prod.images;
+
       a.innerHTML = `
-        <div class="product-img"><img src="${prod.images}" alt="${prod.name}"></div>
+        <div class="product-img"><img src="${prodImg || ''}" alt="${prod.name}"></div>
         <div class="product-info">
           <div class="product-info-top">
             <h3>${prod.name}</h3>
@@ -161,7 +178,6 @@ async function loadData() {
       return a;
     };
 
-
     if (popularGrid && products) {
       popularGrid.innerHTML = '';
       const topProducts = [...products].sort((a, b) => (parseFloat(b.rating) || 0) - (parseFloat(a.rating) || 0)).slice(0, 4);
@@ -170,14 +186,21 @@ async function loadData() {
       });
     }
 
-
     if (productsGrid && products) {
       productsGrid.innerHTML = '';
-      products.forEach(prod => {
-        productsGrid.appendChild(createProductCard(prod));
-      });
+      if (products.length === 0) {
+        productsGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #6b7280; padding: 2rem;">Aucun produit disponible pour le moment.</p>';
+      } else {
+        products.forEach(prod => {
+          productsGrid.appendChild(createProductCard(prod));
+        });
+      }
     }
   } catch (err) {
     console.error('Unexpected error loading data:', err);
+    const productsGrid = document.getElementById('products-grid');
+    if (productsGrid) {
+      productsGrid.innerHTML = '<p class="error-msg" style="text-align:center; grid-column: 1/-1; padding: 2rem;">Erreur inattendue de chargement.</p>';
+    }
   }
 }

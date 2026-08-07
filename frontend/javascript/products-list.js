@@ -1,5 +1,4 @@
 function initProductsList() {
-  const topCategories = document.querySelectorAll('.top-category-pill');
   const sortSelect = document.getElementById('sort-select');
   const searchInput = document.getElementById('search-input');
 
@@ -46,7 +45,13 @@ function initProductsList() {
       currentSort = state.sort || "default";
       currentSearch = state.search || "";
       currentPage = state.page || 1;
-      currentSubcategory = state.subcategory || "all";
+
+      // Only inherit subcategory if category matches
+      if (state.category === currentCategory) {
+        currentSubcategory = state.subcategory || "all";
+      } else {
+        currentSubcategory = "all";
+      }
 
       if (sortSelect) sortSelect.value = currentSort;
       if (searchInput) searchInput.value = currentSearch;
@@ -57,6 +62,7 @@ function initProductsList() {
 
   const saveState = () => {
     sessionStorage.setItem('productsListState', JSON.stringify({
+      category: currentCategory,
       sort: currentSort,
       search: currentSearch,
       page: currentPage,
@@ -65,34 +71,17 @@ function initProductsList() {
   };
 
   const renderProducts = () => {
-    let filtered = allProducts;
-
-
-    if (currentCategory !== "all") {
-      filtered = filtered.filter(p => p.category.includes(currentCategory));
-    }
-
-    if (currentSubcategory !== "all") {
-      filtered = filtered.filter(p => String(p.subcategory) === String(currentSubcategory));
-    }
-
-    if (currentSearch.trim() !== "") {
-      filtered = filtered.filter(p => p.title.includes(currentSearch.trim().toLowerCase()));
-    }
-
+    let filtered = allProducts.filter(p => {
+      let matchCat = currentCategory === "all" || p.category === currentCategory;
+      let matchSubcat = currentSubcategory === "all" || String(p.subcategory) === String(currentSubcategory);
+      let matchSearch = currentSearch.trim() === "" || p.title.includes(currentSearch.trim().toLowerCase());
+      return matchCat && matchSubcat && matchSearch;
+    });
 
     if (currentSort === "price_asc") {
       filtered.sort((a, b) => a.price - b.price);
     } else if (currentSort === "price_desc") {
       filtered.sort((a, b) => b.price - a.price);
-    } else {
-
-      filtered = allProducts.filter(p => {
-        let matchCat = currentCategory === "all" || p.category.includes(currentCategory);
-        let matchSubcat = currentSubcategory === "all" || String(p.subcategory) === String(currentSubcategory);
-        let matchSearch = currentSearch.trim() === "" || p.title.includes(currentSearch.trim().toLowerCase());
-        return matchCat && matchSubcat && matchSearch;
-      });
     }
 
     currentTotalPages = Math.ceil(filtered.length / itemsPerPage);
@@ -105,9 +94,13 @@ function initProductsList() {
     const paginatedProducts = filtered.slice(startIndex, endIndex);
 
     productsGrid.innerHTML = "";
-    paginatedProducts.forEach(p => {
-      productsGrid.appendChild(p.element.cloneNode(true));
-    });
+    if (paginatedProducts.length === 0) {
+      productsGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #6b7280; padding: 2rem;">Aucun produit ne correspond à votre recherche.</p>';
+    } else {
+      paginatedProducts.forEach(p => {
+        productsGrid.appendChild(p.element.cloneNode(true));
+      });
+    }
 
     if (itemsFound) itemsFound.textContent = `${filtered.length} Items Found`;
 
@@ -151,10 +144,11 @@ function initProductsList() {
     }
   };
 
-
   const updateCategoryUI = (categoryValue) => {
-    topCategories.forEach(pill => {
-      if (pill.dataset.category === categoryValue || (categoryValue === 'all' && !pill.dataset.category)) {
+    const pills = document.querySelectorAll('.top-categories-list .top-category-pill');
+    pills.forEach(pill => {
+      const pillCat = pill.dataset.category || 'all';
+      if (pillCat === categoryValue) {
         pill.classList.add('active');
       } else {
         pill.classList.remove('active');
@@ -205,22 +199,12 @@ function initProductsList() {
     }
   };
 
-
-  topCategories.forEach(pill => {
-    pill.addEventListener('click', (e) => {
-
-      if (e.target.closest('.clear-btn')) {
-        currentCategory = "all";
-        currentSubcategory = "all";
-        currentPage = 1;
-        updateCategoryUI(currentCategory);
-        saveState();
-        renderProducts();
-        return;
-      }
-
-      const cat = pill.dataset.category;
-      if (cat) {
+  const topCategoriesContainer = document.querySelector('.top-categories-list');
+  if (topCategoriesContainer) {
+    topCategoriesContainer.addEventListener('click', (e) => {
+      const pill = e.target.closest('.top-category-pill');
+      if (pill) {
+        const cat = pill.dataset.category || "all";
         currentCategory = cat;
         currentSubcategory = "all";
         currentPage = 1;
@@ -229,8 +213,7 @@ function initProductsList() {
         renderProducts();
       }
     });
-  });
-
+  }
 
   if (sortSelect) {
     sortSelect.addEventListener("change", (e) => {
@@ -241,7 +224,6 @@ function initProductsList() {
     });
   }
 
-
   if (searchInput) {
     searchInput.addEventListener("input", (e) => {
       currentSearch = e.target.value;
@@ -250,7 +232,6 @@ function initProductsList() {
       renderProducts();
     });
   }
-
 
   if (prevPageBtn) {
     prevPageBtn.addEventListener('click', () => {

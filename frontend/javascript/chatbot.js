@@ -227,7 +227,7 @@ function initChatbot() {
         </div>
       </div>
     `;
-    suggestionsContainer.style.display = 'none';
+    if (suggestionsContainer) suggestionsContainer.style.display = 'none';
     input.disabled = true;
     input.placeholder = "Connexion requise...";
     sendBtn.disabled = true;
@@ -417,7 +417,7 @@ function initChatbot() {
     input.value = '';
     sendBtn.disabled = true;
 
-    if (suggestionsContainer.style.display !== 'none') {
+    if (suggestionsContainer && suggestionsContainer.style.display !== 'none') {
       suggestionsContainer.style.display = 'none';
     }
 
@@ -437,15 +437,17 @@ function initChatbot() {
     sendBtn.disabled = isStreaming || !input.value.trim();
   });
 
-  suggestionsContainer.querySelectorAll('.chatbot-suggestion-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (isStreaming) return;
-      const text = btn.textContent;
-      addMessage(text, true);
-      suggestionsContainer.style.display = 'none';
-      streamBotReply(text);
+  if (suggestionsContainer) {
+    suggestionsContainer.querySelectorAll('.chatbot-suggestion-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (isStreaming) return;
+        const text = btn.textContent;
+        addMessage(text, true);
+        suggestionsContainer.style.display = 'none';
+        streamBotReply(text);
+      });
     });
-  });
+  }
 
   document.addEventListener('click', (e) => {
     if (!chatWindow.contains(e.target) && !fab.contains(e.target) && chatWindow.classList.contains('open')) {
